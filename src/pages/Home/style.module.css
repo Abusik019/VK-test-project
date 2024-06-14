@@ -1,0 +1,45 @@
+.main{
+    width: 1280px;
+    height: max-content;
+
+    margin-bottom: 200px;
+
+    padding: 30px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main > h1{
+    font-family: "Oswald", sans-serif;
+    font-size: 148px;
+    color: #66fcf1;
+
+    margin-top: 50px;
+
+    z-index: 999;
+
+    height: fit-content;
+}
+
+.spiderman{
+    height: 0px;
+    margin-top: -20px;
+
+    transition: all .3s ease-in-out;
+}
+
+.spiderman.active{
+    height: 400px;
+}
+
+.main > p{
+    color: white;
+    font-size: 20px;
+
+    width: 600px;
+
+    margin-top: 40px;
+}
