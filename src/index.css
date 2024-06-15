@@ -49,9 +49,6 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -77,4 +74,20 @@ li{
 ul{
   margin: 0;
   padding: 0;
+}
+
+.ant-flex.css-dev-only-do-not-override-zg0ahe.ant-flex-align-stretch.ant-flex-gap-middle.ant-flex-vertical{
+  padding: 0;
+  margin: 0 auto;
+
+  background-color: #66fcf1;
+  
+  height: 40px;
+  width: 100%;
+
+  border-radius: 20px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

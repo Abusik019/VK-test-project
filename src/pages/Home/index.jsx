@@ -1,5 +1,6 @@
 import styles from './style.module.css'
 import spiderman from '../../assets/spiderman.png'
+import { NavLink } from 'react-router-dom'
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
         <p>
           У нас на сайте вы можете ознакомиться с большим ассортиментом фильмов. Найдите фильм под свои критерии с помощью наших фильтров, и наслаждайтесь просмотром. А если вам приглянуться несколько фильмов, то вы можете добавить их в избранное.
         </p>
+        <NavLink to='/films'><button className={styles.toFilmsBtn}>К фильмам</button></NavLink>
     </div>
   )
 }

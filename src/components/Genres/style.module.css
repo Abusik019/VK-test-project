@@ -1,0 +1,19 @@
+.genresList{
+    box-sizing: border-box;
+    padding-left: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+
+.genresList > li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.genresList > li > label{
+    color: white;
+}
