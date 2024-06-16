@@ -51,6 +51,20 @@ export const getGenres = createAsyncThunk('films/getGenres', async () => {
     return response.data;
 });
 
+export const getFilmsByRating = createAsyncThunk('films/getFilmsByRating', async ({ rating, page }) => {
+    const page1Response = await axios.get(`${API_URL}/films?order=RATING&type=ALL&ratingFrom=${rating.ratingFrom}&ratingTo=${rating.ratingTo}&yearFrom=1990&yearTo=2024&page=${page}`, HEADERS);
+    const page2Response = await axios.get(`${API_URL}/films?order=RATING&type=ALL&ratingFrom=${rating.ratingFrom}&ratingTo=${rating.ratingTo}&yearFrom=1990&yearTo=2024&page=${page + 1}`, HEADERS);
+
+    if (page1Response.status !== 200 || page2Response.status !== 200) {
+        throw new Error("Error fetching films by rating");
+    }
+
+    return {
+        items: [...page1Response.data.items, ...page2Response.data.items],
+        total: page1Response.data.total
+    };
+});
+
 const filmsSlice = createSlice({
     name: "films",
     initialState,
@@ -58,6 +72,9 @@ const filmsSlice = createSlice({
         setFilms: (state, action) => {
             state.list = action.payload;
         },
+        clearFilms: (state) => {
+            state.list = { items: [], total: 0 };
+          }
     },
     extraReducers: (builder) => {
         // getFilms
@@ -94,7 +111,7 @@ const filmsSlice = createSlice({
         //getGenres
         builder.addCase(getGenres.pending, (state) => {
             state.loading = true;
-        })
+        });
 
         builder.addCase(getGenres.fulfilled, (state, action) => {
             state.genres = action.payload;
@@ -106,9 +123,25 @@ const filmsSlice = createSlice({
             state.loading = false;
             state.error = action.error.message;
         });
+
+        //getFilmsByRating
+        builder.addCase(getFilmsByRating.pending, (state) => {
+            state.loading = true;
+        });
+
+        builder.addCase(getFilmsByRating.fulfilled, (state, action) => {
+            state.list = action.payload;
+            state.loading = false;
+            state.error = null;
+        });
+
+        builder.addCase(getFilmsByRating.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error.message;
+        });
     },
 });
 
-export const { setFilms } = filmsSlice.actions;
+export const { setFilms, clearFilms } = filmsSlice.actions;
 
 export default filmsSlice.reducer;

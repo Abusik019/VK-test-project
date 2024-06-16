@@ -77,17 +77,9 @@ ul{
 }
 
 .ant-flex.css-dev-only-do-not-override-zg0ahe.ant-flex-align-stretch.ant-flex-gap-middle.ant-flex-vertical{
-  padding: 0;
-  margin: 0 auto;
-
+  padding-top: 5px;
+  padding-left: 0;
   background-color: #66fcf1;
-  
-  height: 40px;
-  width: 100%;
-
   border-radius: 20px;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
